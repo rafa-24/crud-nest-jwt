@@ -12,7 +12,7 @@ import { JwtAuthGuard } from '../auth/jwt.auth.guard';
 export class ItemsController {
   constructor(private readonly itemsService: ItemsService) { }
 
-  @UseGuards(JwtAuthGuard)
+  //@UseGuards(JwtAuthGuard)
   @Post()
   create(@Body() createItemDto: CreateItemDto) {
     return this.itemsService.create(createItemDto);
