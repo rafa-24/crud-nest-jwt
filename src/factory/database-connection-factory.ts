@@ -1,19 +1,18 @@
 import { Injectable } from '@nestjs/common';
-import { PostgrestConnection } from '../../postgres-connection';
+import { PostgrestConnection } from './types-connection/postgres-connection';
 import { MongoConnection } from './types-connection/non-relational-connection';
-
-//TODO: estructurar correctamentes las carpetas del patron factory
+import { statSync } from 'fs';
 
 @Injectable()
 export class DatabaseConnectionFactory {
-  //TODO: es mejor usa un switch o un objeto implementar aqui la mejor opcion
   createConnection(nameDatabase: string) {
-    if (nameDatabase === 'postgres') {
-      const potsgresConnection = new PostgrestConnection();
-      return potsgresConnection.create();
-    } else {
-      const mongoConnection = new MongoConnection();
-      return mongoConnection.create();
-    }
+    const objConnection = {
+      mongo: new MongoConnection(),
+      postgres: new PostgrestConnection(),
+    };
+
+    return nameDatabase === 'mongo'
+      ? objConnection.mongo.create()
+      : objConnection.postgres.create();
   }
 }

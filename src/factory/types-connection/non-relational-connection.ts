@@ -1,4 +1,4 @@
-import { DatabaseConnection } from '../types-connection/database-connection.interface';
+import { DatabaseConnection } from '../database-connection.interface';
 import { Injectable, UseFilters } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 
@@ -12,8 +12,8 @@ export class MongoConnection implements DatabaseConnection {
 
     try {
       return connectionMongo === undefined
-        ? console.log('Conexion a mongo exitosa')
-        : console.log('No se pudo establecer conexion a mongo');
+        ? 'Conexion a mongo exitosa'
+        : 'No se pudo establecer conexion a mongo';
     } catch (err) {
       console.error(err);
     }

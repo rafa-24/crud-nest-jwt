@@ -1,4 +1,4 @@
-import { DatabaseConnection } from './src/factory/types-connection/database-connection.interface';
+import { DatabaseConnection } from '../database-connection.interface';
 import { Injectable } from '@nestjs/common';
 import { DataSource } from 'typeorm';
 
@@ -17,7 +17,7 @@ export class PostgrestConnection implements DatabaseConnection {
 
     return await myDataSource
       .initialize()
-      .then(() => console.log('conexion establecida a base de datos Postgres'))
+      .then(() => 'conexion establecida a base de datos Postgres')
       .catch((err) => console.error(err));
   }
 

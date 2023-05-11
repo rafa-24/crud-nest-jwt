@@ -23,7 +23,7 @@ export class UsersController {
   test(@Param('nameDb') nameDataBase: string, @Res() res: Response): any {
     const responseConnection = this.usersService.testFactory(nameDataBase);
     try {
-      return res.status(201).json({ responseConnection });
+      return responseConnection;
     } catch (err) {
       console.error(err);
     }
