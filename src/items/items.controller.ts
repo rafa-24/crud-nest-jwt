@@ -1,16 +1,26 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+  UseGuards,
+  Res,
+} from '@nestjs/common';
 import { ItemsService } from './items.service';
 import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 import { JwtAuthGuard } from '../auth/jwt.auth.guard';
+import { DatabaseConnectionFactory } from '../factory/database-connection-factory';
 
 @ApiBearerAuth()
 @ApiTags('items')
-@Controller('items') 
-  
+@Controller('items')
 export class ItemsController {
-  constructor(private readonly itemsService: ItemsService) { }
+  constructor(private readonly itemsService: ItemsService) {}
 
   //@UseGuards(JwtAuthGuard)
   @Post()
@@ -18,7 +28,6 @@ export class ItemsController {
     return this.itemsService.create(createItemDto);
   }
 
-  
   @Get()
   findAll() {
     return this.itemsService.findAll();
@@ -37,5 +46,10 @@ export class ItemsController {
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.itemsService.remove(id);
+  }
+
+  @Get('test')
+  getTodo() {
+    return this.itemsService.selectTodo();
   }
 }

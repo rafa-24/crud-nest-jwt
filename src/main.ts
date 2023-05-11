@@ -8,11 +8,12 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .addBearerAuth()
-    .setTitle('Example Documentation restapi')
+    .setTitle('Documentacion api')
     .setDescription('Documentacion de prueba')
     .setVersion('1.0')
     .addTag('items')
     .addTag('auth') 
+    .addTag('users')
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('documentation', app, document);

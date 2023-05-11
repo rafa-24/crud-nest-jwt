@@ -5,6 +5,8 @@ import { CreateItemDto } from './dto/create-item.dto';
 import { UpdateItemDto } from './dto/update-item.dto';
 import { Items, ItemsDocuments} from './schema/item.schema';
 
+
+
 @Injectable()
 export class ItemsService {
 
@@ -43,4 +45,7 @@ export class ItemsService {
   async remove(id: string) {
     return await this.itemsModule.deleteOne({_id: id})
   }
+
+  // seleccionar un todo por id
+  selectTodo() {}
 }
