@@ -5,16 +5,15 @@ import { DatabaseConnectionFactory } from '../factory/database-connection-factor
 
 @Injectable()
 export class UsersService {
-  constructor(
-    private readonly databaseConnectionFactory: DatabaseConnectionFactory,
-  ) {}
+  constructor() {}
 
   create(createUserDto: CreateUserDto) {
     return 'This action adds a new user';
   }
 
   findAll() {
-    return `This action returns all users`;
+    const users = ['camila', 'juliana'];
+    return users;
   }
 
   findOne(id: number) {
@@ -27,10 +26,5 @@ export class UsersService {
 
   remove(id: number) {
     return `This action removes a #${id} user`;
-  }
-
-  testFactory(name: string) {
-    const result = this.databaseConnectionFactory.createConnection(name);
-    return result;
   }
 }

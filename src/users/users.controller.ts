@@ -19,6 +19,7 @@ import { Response } from 'express';
 export class UsersController {
   constructor(private readonly usersService: UsersService) {}
 
+  /*
   @Get(':nameDb')
   test(@Param('nameDb') nameDataBase: string, @Res() res: Response): any {
     const responseConnection = this.usersService.testFactory(nameDataBase);
@@ -28,6 +29,7 @@ export class UsersController {
       console.error(err);
     }
   }
+  */
 
   @Post()
   create(@Body() createUserDto: CreateUserDto) {
@@ -41,7 +43,7 @@ export class UsersController {
 
   @Get(':name')
   findOne(@Param('name') name: string) {
-    return 'hola muindo';
+    return 'hola mundo';
   }
 
   @Patch(':id')
